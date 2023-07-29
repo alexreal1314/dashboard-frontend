@@ -1,0 +1,39 @@
+@import "../../colors";
+
+//$progress-inner-color: linear-gradient(to right, #007bff, #dc3545);
+$progress-inner-color: linear-gradient(270deg, #BBB158 6.51%, #4DAFD0 94.42%);
+
+:host {
+  font-weight: 600;
+  display: flex;
+  height: 31px;
+  align-items: center;
+  font-size: 12px;
+  justify-content: space-between;
+  background: $component-main-bg-color;
+
+  .progress-container {
+    overflow: hidden;
+    flex: 1;
+    margin: 0 10px;
+    background-color: $component-secondary-bg-color;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 87%;
+
+    .progress-bar {
+      transition: width 400ms ease-in-out;
+      background-image: $progress-inner-color;
+      width: 0;
+      height: 5px;
+    }
+  }
+
+  .percentage {
+    flex: 0;
+    min-width: 55px;
+    text-align: center;
+    margin-right: 13px;
+    color: #F3F5F7;
+  }
+}

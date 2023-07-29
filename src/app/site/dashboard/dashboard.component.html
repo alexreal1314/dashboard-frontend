@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="grid-wrapper">
+    <section class="header">
+      <div class="row">
+        <div class="row start" style="align-items: end; font-size: 14px;">
+          SYSTEM RISK METER
+        </div>
+
+        <div class="row end">
+          <mat-select name="source" class="select" (selectionChange)="onChange($event.value)">
+            <mat-option *ngFor="let sourceType of sourceTypes" [value]="sourceType">
+              {{ sourceType }}
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row start">
+        <risk-meter [percentage]="riskScore$ | async"></risk-meter>
+      </div>
+
+    </section>
+
+    <section class="main" *ngIf="statistics$ | async as statistics">
+      <div class="row">
+        <app-card [title]="'CLEAR WEB TYPES'" class="card">
+          <div class="card-content" *ngFor="let statistic of statistics['clearWebType']">
+            <div class="count"> {{ statistic.count }} </div>
+            <div class="label"> {{ statistic.key }} <sup *ngIf="statistic.key === 'EXPLOITABLE DATA'">&trade; </sup> </div>
+          </div>
+        </app-card>
+  
+        <app-card [title]="'CLEAR WEB SEVERITIES'">
+          <div class="column-container">
+            <doughnut-chart [data]="clearWebSeverityData" class="doughnut-chart"></doughnut-chart>
+
+            <div class="row">
+              <div class="item" *ngFor="let statistic of statistics['clearWebSeverity']">
+                <div class="label">{{ statistic.key }} </div>
+                <div class="count"> {{ statistic.count }} </div>
+
+              </div>
+            </div>
+          </div>
+        </app-card>
+      </div>
+
+      <div class="row">
+        <app-card [title]="'DARK WEB TYPES'">
+          <div class="card-content" *ngFor="let statistic of statistics['darkWebType']">
+            <div class="count"> {{ statistic.count }} </div>
+            <div class="label">{{ statistic.key }} <sup *ngIf="statistic.key === 'EXPLOITABLE DATA'">&trade;</sup> </div>
+          </div>
+        </app-card>
+    
+        <app-card [title]="'DARK WEB SEVERITIES'">
+          <div class="column-container">
+            <doughnut-chart [data]="darkWebSeverityData" class="doughnut-chart"></doughnut-chart>
+
+            <div class="row">
+              <div class="item" *ngFor="let statistic of statistics['darkWebSeverity']">
+                <div class="label">{{ statistic.key }} </div>
+                <div class="count"> {{ statistic.count }} </div>
+
+              </div>
+            </div>
+          </div>
+        </app-card>
+
+      </div>
+      
+    </section>
+  </div>
+</div>

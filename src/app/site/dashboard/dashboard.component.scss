@@ -1,0 +1,140 @@
+div {
+  text-align: center;
+}
+
+app-card,
+risk-meter,
+doughnut-chart {
+  margin: 20px auto auto auto;
+  width: 300px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.grid-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding-top: 196px;
+  padding-left: 343px;
+  padding-right: 344px;
+  padding-bottom: 195px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &.start{
+      justify-content: start;
+      risk-meter {
+        flex-grow: 1;
+      }
+    }
+
+    &.end{
+      justify-content: end;
+    }
+  }
+
+  .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .row {
+      gap: 20px;
+      
+      app-card {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+.select {
+  box-sizing: border-box;
+  width: 244px;
+  height: 40px;
+  background: #254a69;
+  border: 1px solid #4b81a6;
+
+  padding: 10px 10px;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.select ::ng-deep .mat-select-value {
+  color: #ffffff;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.select ::ng-deep .mat-select-arrow {
+  color: #ffffff;
+}
+
+.card-content{
+  flex-basis: calc(50%);
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  text-transform: uppercase;
+  border-top: 1px solid #223B50;
+
+  & .count {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+
+  & .label {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  sup{
+    top: 0.3em;
+    font-size: smaller;
+    position: relative;
+  }
+}
+
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center stretch;
+  flex-grow: 1;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 1;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      & .label {
+        font-size: 14px;
+      }
+
+      & .count {
+        font-size: 20px;
+      }
+    }
+  }
+}
